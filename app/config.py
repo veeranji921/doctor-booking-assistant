@@ -13,7 +13,7 @@ class Config:
     
     # Groq Settings (Free alternative)
     GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY", ""))
-    GROQ_MODEL = "llama-3.3-70b-versatile"
+    GROQ_MODEL = "llama-3.1-8b-instant"
     
     # Embedding Settings - Choose between OpenAI or Free alternatives
     USE_FREE_EMBEDDINGS = True  # Set to True to use free embeddings
@@ -61,3 +61,4 @@ class Config:
     - Only book after explicit user confirmation
     
     Be concise and helpful."""
+
