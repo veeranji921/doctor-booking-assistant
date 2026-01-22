@@ -79,11 +79,20 @@ class ChatLogic:
                 model=self.model,
                 messages=messages,
                 temperature=0.7,
-                max_tokens=500
+                max_tokens=500,
+                timeout=30  # Add timeout
             )
             return response.choices[0].message.content
         except Exception as e:
-            return f"Error generating response: {str(e)}"
+            error_msg = str(e)
+            if "Connection error" in error_msg or "timeout" in error_msg.lower():
+                return "I'm having trouble connecting to the AI service right now. Please try again in a moment."
+            elif "rate_limit" in error_msg.lower():
+                return "I'm receiving too many requests. Please wait a moment and try again."
+            elif "authentication" in error_msg.lower() or "api_key" in error_msg.lower():
+                return "There's an issue with the API configuration. Please contact the administrator."
+            else:
+                return f"Error generating response: {error_msg}"
     
     def handle_booking_flow(self, message: str) -> str:
         """Handle booking conversation flow"""
@@ -187,11 +196,20 @@ class ChatLogic:
                     model=self.model,
                     messages=messages,
                     temperature=0.7,
-                    max_tokens=300
+                    max_tokens=300,
+                    timeout=30  # Add timeout
                 )
                 response = completion.choices[0].message.content
             except Exception as e:
-                response = f"I apologize, but I encountered an error: {str(e)}"
+                error_msg = str(e)
+                if "Connection error" in error_msg or "timeout" in error_msg.lower():
+                    response = "I'm having trouble connecting to the AI service right now. Please try again in a moment."
+                elif "rate_limit" in error_msg.lower():
+                    response = "I'm receiving too many requests. Please wait a moment and try again."
+                elif "authentication" in error_msg.lower() or "api_key" in error_msg.lower():
+                    response = "There's an issue with the API configuration. Please contact the administrator."
+                else:
+                    response = f"I apologize, but I encountered an error: {error_msg}"
         
         # Add assistant response to history
         self.add_to_history("assistant", response)
