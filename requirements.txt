@@ -1,7 +1,7 @@
 streamlit
 openai
 groq
-PyPDF2
+Pypdf
 langchain-text-splitters
 langchain-community
 langchain-openai
@@ -10,3 +10,4 @@ chromadb
 pandas
 sentence-transformers
 tiktoken
+
