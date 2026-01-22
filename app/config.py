@@ -8,20 +8,20 @@ class Config:
     USE_GROQ = True  # Set to True to use Groq (free), False for OpenAI
     
     # OpenAI Settings
-    OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
+    OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY", ""))
     OPENAI_MODEL = "gpt-3.5-turbo"
     
     # Groq Settings (Free alternative)
-    GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))
-    GROQ_MODEL = "llama-3.3-70b-versatile"  # Updated to current model
+    GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY", ""))
+    GROQ_MODEL = "llama-3.3-70b-versatile"
     
     # Embedding Settings - Choose between OpenAI or Free alternatives
     USE_FREE_EMBEDDINGS = True  # Set to True to use free embeddings
     EMBEDDING_MODEL = "text-embedding-ada-002"  # Only used if USE_FREE_EMBEDDINGS = False
     
     # Email Settings
-    EMAIL_ADDRESS = st.secrets.get("EMAIL_ADDRESS", os.getenv("EMAIL_ADDRESS"))
-    EMAIL_PASSWORD = st.secrets.get("EMAIL_PASSWORD", os.getenv("EMAIL_PASSWORD"))
+    EMAIL_ADDRESS = st.secrets.get("EMAIL_ADDRESS", os.getenv("EMAIL_ADDRESS", ""))
+    EMAIL_PASSWORD = st.secrets.get("EMAIL_PASSWORD", os.getenv("EMAIL_PASSWORD", ""))
     SMTP_SERVER = "smtp.gmail.com"
     SMTP_PORT = 587
     
