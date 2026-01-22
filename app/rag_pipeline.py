@@ -1,6 +1,6 @@
 from typing import List
 import streamlit as st
-from pyPDF2 import PdfReader
+from pypdf import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
@@ -233,3 +233,4 @@ class RAGPipeline:
                 "document_count": "Unknown"
 
             }
+
