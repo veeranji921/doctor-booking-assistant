@@ -1,11 +1,12 @@
 streamlit
 openai
-langchain
-langchain-openai
+groq
+PyPDF2
+langchain-text-splitters
 langchain-community
+langchain-openai
+langchain-core
 chromadb
-pypdf
-python-dotenv
 pandas
+sentence-transformers
 tiktoken
-pydantic
